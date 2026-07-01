@@ -4,5 +4,6 @@ matplotlib
 seaborn
 nltk
 scikit-learn
+kaleido
 plotly
 openpyxl
