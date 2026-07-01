@@ -1,103 +1,75 @@
 # UN Speech Sentiment and Palestine Voting Behavior
 
-This project analyzes United Nations General Debate speeches and General Assembly voting records to study how rhetoric about Palestine relates to voting behavior on Palestine-related resolutions.
+This repository contains the implementation of Assignment 1 of the course Fundamentals of Data Science, completed as part of the [MSc Information Studies](https://www.uva.nl/en/programmes/masters/information-studies/information-studies.html) programme at the [University of Amsterdam](https://www.uva.nl/en). It contains the code of the results and analysis that are reported in `Rhetoric_and_Resolution__Using_UN_Speech_Sentiment_to_Predict_Voting_Behavior_on_Palestine.pdf`
 
-## Datasets
+This project analyzes United Nations General Debate speeches and General Assembly voting records to compare countries’ Palestine-related rhetoric with their voting behavior on Palestine-related resolutions.
+
+## Datasets used
 
 - `Data/TXT/`
-  - Raw UN General Debate speech text files, organized by General Assembly session and year.
-  - Each file contains one country speech and uses the country code in the filename.
-  - Source: [UN General Debate Corpus on Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0TJX8Y).
+  - Raw [UN General Debate speech](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0TJX8Y) text files, organized by General Assembly session and year.
 
 
 - `Data/2025_9_19_ga_voting.csv`
   - [UN General Assembly voting dataset](https://digitallibrary.un.org/record/4060887/files/2025_09_19_ga_voting_md.md) covering resolutions from 1946 to 2025.
-  - The notebook filters this data to Palestine-related resolutions using title and agenda keywords.
-  - Votes from 2025 are excluded because corresponding speeches are not available in the speech dataset.
 
 - `Data/UNSD — Methodology.csv`
-  - UN Statistics Division country and region metadata.
-  - Used to add country names, ISO codes, and regional groupings to the speech and recognition datasets.
-  - Source: [UNSD M49 methodology overview](https://unstats.un.org/unsd/methodology/m49/overview/).
+  - [UN Statistics Division](https://unstats.un.org/unsd/methodology/m49/overview/) country and region metadata, used to add country names, ISO codes, and regional groupings to the speech and recognition datasets.
 
 - `Data/countries-that-recognize-palestine-2025.csv`
-  - Dataset of countries that recognize Palestine and their recognition dates.
-  - Used to create a time-aware `recognized_palestine` feature for each country-year.
-  - Source: [World Population Review country ranking](https://worldpopulationreview.com/country-rankings/countries-that-recognize-palestine).
+  - Dataset of countries that recognize Palestine and their recognition dates from [World Population Review](https://worldpopulationreview.com/country-rankings/countries-that-recognize-palestine).
 
 - `Data/Senticnet/senticnet.xlsx`
-  - [SenticNet](https://sentic.net/downloads/) sentiment lexicon.
-  - Used to extend VADER sentiment scoring with additional words found through TF-IDF in the Palestine-related speech corpus.
+  - [SenticNet](https://sentic.net/downloads/) sentiment lexicon, used to extend VADER sentiment scoring with additional words found through TF-IDF in the Palestine-related speech corpus.
 
 
-## What the Notebook Does
+## Preprocessing Steps
 
-- Loads the consolidated UN speech dataset from `Data/AllSpeeches.csv`.
+The preprocessing pipeline prepares the dataset used for the analysis.
 
-- Extracts Palestine-related speech content using keywords such as `gaza`, `west bank`, `palestine`, `palestinian`, `two-state`, `east jerusalem`, and `plo`.
+- Consolidates the raw UN General Debate speech text files into a tabular dataset.
 
-- Counts Palestine-related keyword mentions for each country speech.
+- Extracts Palestine-related speech content using keywords and counts Palestine mentions for each country speech.
 
 - Uses TF-IDF to identify important words in Palestine-related sentences.
 
-- Extends VADER sentiment scoring with SenticNet polarity values for relevant words that are missing from VADER.
+- Extends VADER sentiment scoring with SenticNet polarity values for relevant words that are missing from VADER lexicon.
 
 - Computes sentiment scores for Palestine-related sentences and classifies each speech as positive, neutral, or negative.
 
-- Merges speech data with UNSD country and region metadata.
-
-- Filters UN General Assembly voting records to Palestine-related resolutions.
+- Filters UN General Assembly voting records to Palestine-related resolutions using keywords in resolution titles and agenda items.
 
 - Keeps resolutions where Israel voted `No`, so a `Yes` vote can be interpreted as support for the Palestine-related resolution.
 
-- Aggregates each country's yearly Palestine-related voting behavior into a `yes_pcg` value.
 
-- Adds Palestine recognition timing and creates a yearly `recognized_palestine` feature.
+## Analysis and Outputs
 
-- Performs exploratory data analysis on:
-  - Palestine mentions over time.
-  - Sentiment trends over time.
-  - Voting behavior by country and year.
-  - Voting behavior by Palestine recognition status.
-  - Regional and geographic patterns.
+After preprocessing, the analysis notebook `UN Palestine Research.ipynb` can be run.
 
-- Builds classification models to predict whether a country-year has a majority `Yes` voting pattern on Palestine-related resolutions.
+The notebook uses the preprocessed datasets to study how Palestine-related rhetoric, voting behavior, and recognition status relate to each other over time. The exploratory analysis first examines trends in Palestine-related mentions and sentiment, then compares these patterns with country-year voting behavior on Palestine-related resolutions.
 
-- Compares Random Forest, Gaussian Naive Bayes, and Logistic Regression models.
+The analysis also considers differences between countries that recognize Palestine and those that do not, as well as regional and geographic variation in mentions, sentiment, recognition, and voting patterns. Finally, a classification model is implemented to predict whether a country-year has a majority `Yes` voting pattern on Palestine-related resolutions. A Random Forest fine-tuned with grid search is created, evaluated with accuracy, classification reports, a confusion matrix, feature importance, and ROC/AUC analysis.
 
-- Performs grid search for the Random Forest model.
-
-- Evaluates the final model using accuracy, classification reports, confusion matrix, feature importance, and ROC/AUC analysis.
-
-## Outputs
-
-Generated figures are saved in `figs/`, including:
-
-- Sentiment and Palestine keyword trends.
-- Palestine recognition and voting behavior plots.
-- Choropleth maps for mentions and voting.
-- Mention distribution boxplots.
-- Random Forest feature importance.
-- Confusion matrix.
 
 ## Rebuilding the Speech Dataset
-
-To rebuild `Data/AllSpeeches.csv` from the raw text files:
-
-```bash
-python scripts/build_all_speeches_csv.py
-```
-
-To write the generated CSV to a different path:
-
-```bash
-python scripts/build_all_speeches_csv.py --output path/to/AllSpeeches.csv
-```
-
-## Environment
 
 Install the Python dependencies with:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+To rebuild `Data/AllSpeeches.csv` from the raw text files:
+
+Download the required raw data from the links provided and place them under a `Data` folder. 
+
+```bash
+python scripts/build_all_speeches_csv.py
+```
+
+
+Contributors:
+* Christoforos Fragkiadakis
+* Konstantinos Koutris
+* Max Johnston
+* Berk Bahcetepe
