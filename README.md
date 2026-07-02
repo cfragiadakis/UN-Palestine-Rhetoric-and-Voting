@@ -1,6 +1,6 @@
 # UN Speech Sentiment and Palestine Voting Behavior
 
-This repository contains the implementation of Assignment 1 for the course Fundamentals of Data Science, completed as part of the [MSc Information Studies](https://www.uva.nl/en/programmes/masters/information-studies/information-studies.html) programme at the [University of Amsterdam](https://www.uva.nl/en). The repository contains the preprocessing pipeline, exploratory analysis, and predictive modeling used in the accompanying report [`Palestine Rhetoric_and_Resolution.pdf`](Palestine_Rhetoric_and_Resolution.pdf).
+This repository contains the implementation of the analysis of Palestine-related rhetoric in United Nations General Debate speeches and its relationship with voting behavior on Palestine-related United Nations General Assembly resolutions. The preprocessing pipeline, exploratory analysis, and predictive modeling form the basis of the accompanying report, [`Palestine Rhetoric_and_Resolution.pdf`](Palestine_Rhetoric_and_Resolution.pdf).
 
 ## Project Overview
 
@@ -102,3 +102,5 @@ The predictive task is formulated as a binary classification problem. For each c
 - [Konstantinos Koutris](https://github.com/kkoutris)
 - [Max Johnston](https://github.com/MaximusJ08)
 - [Berk Bahcetepe](https://github.com/berkbahcetepe6)
+
+1st Assignment for Fundamentals of Data Science 2025-2026 (Information Studies - Data Science track, UvA)
