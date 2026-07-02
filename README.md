@@ -4,7 +4,9 @@ This repository contains the implementation of Assignment 1 for the course Funda
 
 ## Project Overview
 
-This project combines United Nations General Debate speeches, General Assembly voting records, country-region metadata, and Palestine recognition data to compare diplomatic rhetoric with voting behavior. It investigates whether Palestine-related rhetoric in United Nations General Debate speeches can help explain or predict country-level voting behavior on Palestine-related United Nations General Assembly resolutions.
+This project combines United Nations General Debate speeches, General Assembly voting records, country-region metadata, and Palestine recognition data to compare diplomatic rhetoric with voting behavior. It was developed in relation to the [2025 United Nations General Assembly theme, “Better together: 80 years and more for peace, development and human rights”](https://www.un.org/en/ga/80/), and is connected to [Sustainable Development Goal 16: Peace, Justice and Strong Institutions](https://www.un.org/sustainabledevelopment/peace-justice/).
+
+The project investigates whether Palestine-related rhetoric in United Nations General Debate speeches can help explain or predict country-level voting behavior on Palestine-related United Nations General Assembly resolutions.
 
 The analysis focuses on two main questions:
 
