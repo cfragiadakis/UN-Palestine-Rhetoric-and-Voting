@@ -4,14 +4,14 @@ This repository contains the implementation of Assignment 1 for the course Funda
 
 ## Project Overview
 
-This project combines United Nations General Debate speeches, General Assembly voting records, country-region metadata, and Palestine recognition data to compare diplomatic rhetoric with voting behavior. It also investigates whether Palestine-related rhetoric in United Nations General Debate speeches can help explain or predict country-level voting behavior on Palestine-related United Nations General Assembly resolutions.
+This project combines United Nations General Debate speeches, General Assembly voting records, country-region metadata, and Palestine recognition data to compare diplomatic rhetoric with voting behavior. It investigates whether Palestine-related rhetoric in United Nations General Debate speeches can help explain or predict country-level voting behavior on Palestine-related United Nations General Assembly resolutions.
 
 The analysis focuses on two main questions:
 
 1. Are there patterns in Palestine-related mentions, sentiment, geography, and recognition status that relate to countries’ voting behavior?
 2. Can speech-based and contextual features predict whether a country-year shows majority support for Palestine-related resolutions?
 
-In this project, a country is treated as supporting Palestine-related resolutions in a given year when it voted `Yes` in more than 50% of the filtered Palestine-related resolutions for that year. The predictive task was formulated as a binary classification problem, where the model predicted whether a country in a specific year showed majority support for Palestine-related resolutions.
+In this project, a country is treated as supporting Palestine-related resolutions in a given year when it voted `Yes` in more than 50% of the Palestine-related resolutions for that year. The predictive task was formulated as a binary classification problem, where the model predicted whether a country in a specific year showed majority support for Palestine-related resolutions.
 
 ## Key Findings
 * Palestine-related mentions and geographic region were stronger predictors of voting behavior than sentiment polarity.
