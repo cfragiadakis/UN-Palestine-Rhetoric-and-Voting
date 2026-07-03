@@ -103,4 +103,4 @@ The predictive task is formulated as a binary classification problem. For each c
 - [Max Johnston](https://github.com/MaximusJ08)
 - [Berk Bahcetepe](https://github.com/berkbahcetepe6)
 
-1st Assignment for Fundamentals of Data Science 2025-2026 (Information Studies - Data Science track, UvA)
+1st Assignment for Fundamentals of Data Science 2025-2026 Information Studies - Data Science track, University of Amsterdam
